@@ -1,0 +1,9 @@
+.stock-image {
+  width: 10em;
+}
+
+.controlgroup-textinput{
+    padding-top:.22em;
+    padding-bottom:.22em;
+    width: 50px;
+}
