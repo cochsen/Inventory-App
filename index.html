@@ -11,7 +11,6 @@
   <meta charset="utf-8">
   <title>Larry's Snack Inventory</title>
 </head>
-<body>
 <div id="product-panels">
 </div>
 <div data-role="page" id="main-page">
@@ -30,6 +29,19 @@
     </form>
   </div>
 
+  <!-- add product panel -->
+  <div data-role="panel" data-position="right" data-display="overlay" id="add-product-panel" >
+    <form>
+      <label for="product-name">Product name:</label>
+      <input type="text" name="product-name" id="product-name" value="">
+      <label for="product-price">Product Price:</label>
+      <input type="number" name="product-price" id="product-price" value="">
+      <button id="take-photo">Take Photo</button>
+      <button id="from-gallery">From Gallery</button>
+      <button id="add-product-submit" class="ui-btn ui-corner-all ui-shadow">Submit</button>
+    </form>
+  </div>
+   
   <!-- header -->
   <div data-role="header" id="main-header">
     <h2>Larry's Inventory</h2>
@@ -38,9 +50,13 @@
   <div data-role="content" id="main-content">
     <ul data-role="listview" data-inset="true" id="main-product-list">
     </ul>
-    <button id="push-data" class="ui-btn ui-corner-all ui-shadow">Push Data</button>
+    <a href="#add-product-panel" id="add-product-btn" class="ui-btn ui-corner-all ui-shadow">Add Product</a>
+    <a href="#popup" id="push-data" data-rel="popup" class="ui-btn ui-corner-all ui-shadow" data-transition="pop">Send Data</a>
     <button id="reset" class="ui-btn ui-corner-all ui-shadow">Reset</button>        
   </div>
+  <div data-role="popup" id="popup" class="ui-content" data-dismissible="false">
+    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
+    <p>Data Sent</p>
+  </div>
 </div><!-- page -->
-</body>
 </html>
