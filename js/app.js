@@ -1,10 +1,10 @@
-var fb = new Firebase('https://larrys-snack-stand.firebaseio.com/');
-
 var d = new Date();
 var month = d.getMonth() + 1;
 var day = d.getDate();
 var year = d.getFullYear();
 var date = month.toString() + "/" + day.toString() + "/" + year.toString();
+
+var fb = new Firebase('https://larrys-snack-stand.firebaseio.com/' + month + '-' + day + '-' + year);
 
 var products = [
   {
@@ -18,7 +18,7 @@ var products = [
   {
     name: "Coca-Cola",
     price: "1.00",
-    href: "#coke",
+    href: "coke",
     img: "https://s3.amazonaws.com/CashHelper/Larry/coca-cola-can_p.png",
     count: 0, 
     prod_num: 1 
@@ -26,7 +26,7 @@ var products = [
   {
     name: "Chips Ahoy",
     price: "1.00",
-    href: "#chipsahoy",
+    href: "chipsahoy",
     img: "https://s3.amazonaws.com/CashHelper/Larry/chips_ahoy_p.png",
     count: 0,
     prod_num: 2
@@ -34,7 +34,7 @@ var products = [
   {
     name: "Diet Coke",
     price: "1.00",
-    href: "#dietcoke",
+    href: "dietcoke",
     img: "https://s3.amazonaws.com/CashHelper/Larry/diet-coke-can_p.png",
     count: 0,
     prod_num: 3
@@ -42,7 +42,7 @@ var products = [
   {
     name: "Fritos Chips",
     price: "1.00",
-    href: "#fritos",
+    href: "fritos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/Fritos_p.png",
     count: 0,
     prod_num: 4
@@ -50,16 +50,15 @@ var products = [
   {
     name: "Lays Sour Cream and Onion Chips",
     price: "1.00",
-    href: "#sourcream",
+    href: "sourcream",
     img: "https://s3.amazonaws.com/CashHelper/Larry/Lays-Cream-Onion-Chips_p.png",
     count: 0,
-
     prod_num: 5
   },
   {
     name: "Nutter Butter",
     price: "1.00",
-    href: "#nutterbutter",
+    href: "nutterbutter",
     img: "https://s3.amazonaws.com/CashHelper/Larry/Nutter_Butter_p.png",
     count: 0,
     prod_num: 6
@@ -67,7 +66,7 @@ var products = [
   {
     name: "Reese's Peanut Butter Cups",
     price: "1.00",
-    href: "#reesescups",
+    href: "reesescups",
     img: "https://s3.amazonaws.com/CashHelper/Larry/amos_p.png",
     count: 0,
     prod_num: 7
@@ -75,7 +74,7 @@ var products = [
   {
     name: "Blue Diamond Almonds",
     price: "1.00",
-    href: "#bdalmonds",
+    href: "bdalmonds",
     img: "https://s3.amazonaws.com/CashHelper/Larry/bd_almonds_p.png",
     count: 0,
     prod_num: 8
@@ -83,7 +82,7 @@ var products = [
   {
     name: "Cheetos",
     price: "1.00",
-    href: "#cheetos",
+    href: "cheetos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/cheetos_p.png",
     count: 0,
     prod_num: 9
@@ -91,7 +90,7 @@ var products = [
   {
     name: "Nestle Crunch",
     price: "1.00",
-    href: "#crunch",
+    href: "crunch",
     img: "https://s3.amazonaws.com/CashHelper/Larry/crunch_p.png",
     count: 0,
     prod_num: 10
@@ -99,7 +98,7 @@ var products = [
   {
     name: "Nacho Cheese Doritos",
     price: "1.00",
-    href: "#nachodoritos",
+    href: "nachodoritos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/doritos_nachocheese_p.png",
     count: 0,
     prod_num: 11
@@ -107,38 +106,50 @@ var products = [
   {
     name: "Golden Oreos",
     price: "1.00",
-    href: "#goldenoreos",
-    img: "https://s3.amazonaws.com/CashHelper/Larry/golden_oreo_p.png"
+    href: "goldenoreos",
+    img: "https://s3.amazonaws.com/CashHelper/Larry/golden_oreo_p.png",
+    count: 0,
+    prod_num: 12
   },
   {
   name: "Lance Peanut Butter Crackers",
     price: "1.00",
-    href: "#lancepbcrackers",
-    img: "https://s3.amazonaws.com/CashHelper/Larry/lance_pb_crackers_p.png"
+    href: "lancepbcrackers",
+    img: "https://s3.amazonaws.com/CashHelper/Larry/lance_pb_crackers_p.png",
+    count: 0,
+    prod_num: 13
   },
   {
     name: "Lays Potato Chips",
     price: "1.00",
-    href: "#lays",
-    img: "https://s3.amazonaws.com/CashHelper/Larry/lays-potato-chips-cl_p.png"
+    href: "lays",
+    img: "https://s3.amazonaws.com/CashHelper/Larry/lays-potato-chips-cl_p.png",
+    count: 0,
+    prod_num: 14
   },
   {
     name: "M & M's",
     price: "1.00",
-    href: "#mms",
-    img: "https://s3.amazonaws.com/CashHelper/Larry/mms_p.png"
+    href: "mms",
+    img: "https://s3.amazonaws.com/CashHelper/Larry/mms_p.png",
+    count: 0,
+    prod_num: 15
   },
   {
     name: "Oreos",
     price: "1.00",
-    href: "#oreos",
-    img: "https://s3.amazonaws.com/CashHelper/Larry/oreo_p.png"
+    href: "oreos",
+    img: "https://s3.amazonaws.com/CashHelper/Larry/oreo_p.png",
+    count: 0,
+    prod_num: 16
   },
   {
     name: "Planters Heart Healthy Mix",
     price: "1.00",
-    href: "#planters",
-    img: "https://s3.amazonaws.com/CashHelper/Larry/planters_nutrition_heart_healthy_mix_p.png"
+    href: "planters",
+    img: "https://s3.amazonaws.com/CashHelper/Larry/planters_nutrition_heart_healthy_mix_p.png",
+    count: 0,
+    prod_num: 17
   }
 ];
 
@@ -175,17 +186,14 @@ $('#minus').click(function(event) {
 
 $('#push-data').click(function() {
   for (var l = 0; l < products.length; l++) {
-    fb.push({Date: date,
-             Product: products[l].name,
+    fb.push({Product: products[l].name,
              Sold: products[l].count});
   }
-  /*
-  fb.push({Date : date,
-           "Pretzels" : products[0].count,
-           "Coca-Cola" : products[1].count,
-           "Chips Ahoy" : products[2].count,
-           "Diet Coke" : products[3].count});
-           */
+  fb.on('value', function (snapshot) {
+  console.log(snapshot.val());
+}, function (errorObject) {
+  console.log('The read failed: ' + errorObject.code);
+});
 });
 
 $('#reset').click(function(event) {
