@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name ="viewport" content ="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">  
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+<script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
   <meta charset="utf-8">
   <title>Larry's Snack Inventory</title>
-  <meta name ="viewport" content ="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">  
-  <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
-  <link rel="stylesheet" href="css/app.css" />
-  <script src="js/jquery-1.11.1.min.js"></script>
-  <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/jquery.mobile-1.4.2.min.js"></script>
 </head>
+<body>
 <div id="product-panels">
 </div>
 <div data-role="page" id="main-page">
@@ -27,6 +26,7 @@
         <input id="count" type="text" data-wrapper-class="controlgroup-textinput ui-btn" value="0" readonly>
       </fieldset>
     </form>
+    <button id="close-button" data-rel="close">Close</button>
   </div>
 
   <!-- add product panel -->
@@ -38,8 +38,10 @@
       <input type="number" name="product-price" id="product-price" value="">
       <button id="take-photo">Take Photo</button>
       <button id="from-gallery">From Gallery</button>
-      <button id="add-product-submit" class="ui-btn ui-corner-all ui-shadow">Submit</button>
+      <label for="product-img-web">From web address:</label>
+      <input type="text" name="product-img-web" id="product-img-web" value="">
     </form>
+    <button id="add-product-submit" class="ui-btn ui-corner-all ui-shadow" data-rel="close">Submit</button>
   </div>
    
   <!-- header -->
@@ -53,10 +55,24 @@
     <a href="#add-product-panel" id="add-product-btn" class="ui-btn ui-corner-all ui-shadow">Add Product</a>
     <a href="#popup" id="push-data" data-rel="popup" class="ui-btn ui-corner-all ui-shadow" data-transition="pop">Send Data</a>
     <button id="reset" class="ui-btn ui-corner-all ui-shadow">Reset</button>        
+    <a href="#history" id="history-btn" class="ui-btn ui-corner-all ui-shadow">History</a>
   </div>
   <div data-role="popup" id="popup" class="ui-content" data-dismissible="false">
     <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a>
     <p>Data Sent</p>
   </div>
 </div><!-- page -->
+
+<div data-role="page" id="history">
+  <div data-role="header" id="history-header">
+    <h2>History View</h2>
+  </div>
+  <div data-role="content" id="history-content">
+    <div id="inventory-history">
+    </div>
+    <a href="#main-page" class="ui-btn ui-corner-all ui-shadow">Back</a>
+  </div>
+</div>
+  
+</body>
 </html>
