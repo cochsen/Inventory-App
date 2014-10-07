@@ -26,6 +26,7 @@
         <input id="count" type="text" data-wrapper-class="controlgroup-textinput ui-btn" value="0" readonly>
       </fieldset>
     </form>
+    <p>Inventory: <span id="stock-left">0</span></p>
     <button id="close-button" data-rel="close">Close</button>
   </div>
 
@@ -36,9 +37,11 @@
       <input type="text" name="product-name" id="product-name" value="">
       <label for="product-price">Product Price:</label>
       <input type="number" name="product-price" id="product-price" value="">
+      <label for="product-quantity">Product Quantity:</label>
+      <input type="number" name="product-quantity" id="product-quantity" value="">
       <button id="take-photo">Take Photo</button>
       <button id="from-gallery">From Gallery</button>
-      <label for="product-img-web">From web address:</label>
+      <label for="product-img-web">Photo from web address:</label>
       <input type="text" name="product-img-web" id="product-img-web" value="">
     </form>
     <button id="add-product-submit" class="ui-btn ui-corner-all ui-shadow" data-rel="close">Submit</button>
