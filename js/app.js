@@ -153,6 +153,7 @@ var products = [
   }
 ];
 
+var count = products.length;
 var panels = [];
 var trigger = '';
 var current_prod;
@@ -181,8 +182,14 @@ $('#minus').click(function(event) {
     {
       products[current_prod].count--;
     }
-  $('#count').val(products[0].count);
+  $('#count').val(products[current_prod].count);
 });
+
+/*
+$('#close-button').click(function(event) {
+  event.preventDefault();
+});
+*/
 
 $('#push-data').click(function() {
   for (var l = 0; l < products.length; l++) {
@@ -205,14 +212,58 @@ $('#reset').click(function(event) {
     }
 });
 
+$('#add-product-submit').click(function () {
+  count++;
+  var name = $('#product-name').val();
+  var price = $('#product-price').val();
+  var href = "na";
+  var img = $('#product-img-web').val();
+  var c = 0;
+  var prodnum = count - 1;
+  var new_product = {name: name, 
+                     price: price,
+                     href: href,
+                     img: img,
+                     count: c,
+                     prod_num: prodnum
+                    };
+  products.push(new_product);
+  $('#main-product-list').append(
+      '<li class="menu-item" id="' + products[count-1].prod_num + '" >' +
+      '<a href="#panel">' +
+      '<img src="' + products[count-1].img + '">' +
+      '<h2>' + products[count-1].name + '</h2>' +
+      '<p>$ ' + products[count-1].price + '</p>' +
+      '</a>' +
+      '</li>'
+  ).trigger("create").listview("refresh");
+});
+
+
 $(document).ready(function() {
   $('#main-product-list').lisview("refresh");
 });
    
-  $('.menu-item').on('click', function(event) {
+  $('#main-product-list').on('click', '.menu-item', function(event) {
     var selected = $(this).attr("id");
+    console.log(selected);
     current_prod = selected.toString();
     $('#panel h2').text(products[current_prod].name);
     $('#panel img').attr('src', products[current_prod].img);
     $('#count').val(products[current_prod].count);
   });
+
+fb.on("value", function(snap) {
+  var h = JSON.stringify(snap.val());
+  var results = [];
+  for(var key in snap.val()) 
+  {
+    var prod = snap.val()[key];
+    for(var prop in prod) 
+    {
+      if(prod.hasOwnProperty(prop)){
+        console.log(prop + " = " + prod[prop]);
+      }
+    }
+  }
+});
