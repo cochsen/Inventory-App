@@ -12,16 +12,18 @@ var products = [
     price: "1.00",
     href: "pretzel",
     img: "https://s3.amazonaws.com/CashHelper/Larry/pretzel.png",
+    prod_num: 0,
     count: 0,
-    prod_num: 0
+    quantity: 24
   }, 
   {
     name: "Coca-Cola",
     price: "1.00",
     href: "coke",
     img: "https://s3.amazonaws.com/CashHelper/Larry/coca-cola-can_p.png",
-    count: 0, 
-    prod_num: 1 
+    count: 0,
+    prod_num: 1,
+    quantity: 12
   },
   {
     name: "Chips Ahoy",
@@ -29,7 +31,8 @@ var products = [
     href: "chipsahoy",
     img: "https://s3.amazonaws.com/CashHelper/Larry/chips_ahoy_p.png",
     count: 0,
-    prod_num: 2
+    prod_num: 2,
+    quantity: 12
   },
   {
     name: "Diet Coke",
@@ -37,7 +40,8 @@ var products = [
     href: "dietcoke",
     img: "https://s3.amazonaws.com/CashHelper/Larry/diet-coke-can_p.png",
     count: 0,
-    prod_num: 3
+    prod_num: 3,
+    quantity: 20
   },
   {
     name: "Fritos Chips",
@@ -45,7 +49,8 @@ var products = [
     href: "fritos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/Fritos_p.png",
     count: 0,
-    prod_num: 4
+    prod_num: 4,
+    quantity: 6
   },
   {
     name: "Lays Sour Cream and Onion Chips",
@@ -53,7 +58,8 @@ var products = [
     href: "sourcream",
     img: "https://s3.amazonaws.com/CashHelper/Larry/Lays-Cream-Onion-Chips_p.png",
     count: 0,
-    prod_num: 5
+    prod_num: 5,
+    quantity: 6
   },
   {
     name: "Nutter Butter",
@@ -61,7 +67,8 @@ var products = [
     href: "nutterbutter",
     img: "https://s3.amazonaws.com/CashHelper/Larry/Nutter_Butter_p.png",
     count: 0,
-    prod_num: 6
+    prod_num: 6,
+    quantity: 10
   },
   {
     name: "Reese's Peanut Butter Cups",
@@ -69,7 +76,8 @@ var products = [
     href: "reesescups",
     img: "https://s3.amazonaws.com/CashHelper/Larry/amos_p.png",
     count: 0,
-    prod_num: 7
+    prod_num: 7,
+    quantity: 10
   },
   {
     name: "Blue Diamond Almonds",
@@ -77,7 +85,8 @@ var products = [
     href: "bdalmonds",
     img: "https://s3.amazonaws.com/CashHelper/Larry/bd_almonds_p.png",
     count: 0,
-    prod_num: 8
+    prod_num: 8,
+    quantity: 12
   },
   {
     name: "Cheetos",
@@ -85,7 +94,8 @@ var products = [
     href: "cheetos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/cheetos_p.png",
     count: 0,
-    prod_num: 9
+    prod_num: 9,
+    quantity: 6
   },
   {
     name: "Nestle Crunch",
@@ -93,7 +103,8 @@ var products = [
     href: "crunch",
     img: "https://s3.amazonaws.com/CashHelper/Larry/crunch_p.png",
     count: 0,
-    prod_num: 10
+    prod_num: 10,
+    quantity: 8
   },
   {
     name: "Nacho Cheese Doritos",
@@ -101,7 +112,8 @@ var products = [
     href: "nachodoritos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/doritos_nachocheese_p.png",
     count: 0,
-    prod_num: 11
+    prod_num: 11,
+    quantity: 6
   },
   {
     name: "Golden Oreos",
@@ -109,7 +121,8 @@ var products = [
     href: "goldenoreos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/golden_oreo_p.png",
     count: 0,
-    prod_num: 12
+    prod_num: 12,
+    quantity: 8
   },
   {
   name: "Lance Peanut Butter Crackers",
@@ -125,7 +138,8 @@ var products = [
     href: "lays",
     img: "https://s3.amazonaws.com/CashHelper/Larry/lays-potato-chips-cl_p.png",
     count: 0,
-    prod_num: 14
+    prod_num: 14,
+    quantity: 10
   },
   {
     name: "M & M's",
@@ -133,7 +147,8 @@ var products = [
     href: "mms",
     img: "https://s3.amazonaws.com/CashHelper/Larry/mms_p.png",
     count: 0,
-    prod_num: 15
+    prod_num: 15,
+    quantity: 12
   },
   {
     name: "Oreos",
@@ -141,7 +156,8 @@ var products = [
     href: "oreos",
     img: "https://s3.amazonaws.com/CashHelper/Larry/oreo_p.png",
     count: 0,
-    prod_num: 16
+    prod_num: 16,
+    quantity: 8
   },
   {
     name: "Planters Heart Healthy Mix",
@@ -149,7 +165,8 @@ var products = [
     href: "planters",
     img: "https://s3.amazonaws.com/CashHelper/Larry/planters_nutrition_heart_healthy_mix_p.png",
     count: 0,
-    prod_num: 17
+    prod_num: 17,
+    quantity: 12
   }
 ];
 
@@ -172,8 +189,12 @@ for (var i = 0; i < products.length; i++) {
 
 $('#plus').click(function(event) {
   event.preventDefault();
-  products[current_prod].count++;
-  $('#count').val(products[current_prod].count);
+  if (products[current_prod].quantity > 0) {
+    products[current_prod].count++;
+    products[current_prod].quantity--;
+    $('#count').val(products[current_prod].count);
+    $('#stock-left').text(products[current_prod].quantity);
+  }
 });
 
 $('#minus').click(function(event) {
@@ -181,15 +202,11 @@ $('#minus').click(function(event) {
   if (products[current_prod].count > 0)
     {
       products[current_prod].count--;
+      products[current_prod].quantity++;
     }
   $('#count').val(products[current_prod].count);
+  $('#stock-left').text(products[current_prod].quantity);
 });
-
-/*
-$('#close-button').click(function(event) {
-  event.preventDefault();
-});
-*/
 
 $('#push-data').click(function() {
   for (var l = 0; l < products.length; l++) {
@@ -216,6 +233,7 @@ $('#add-product-submit').click(function () {
   count++;
   var name = $('#product-name').val();
   var price = $('#product-price').val();
+  var quantity = $('#product-quantity').val();
   var href = "na";
   var img = $('#product-img-web').val();
   var c = 0;
@@ -225,7 +243,8 @@ $('#add-product-submit').click(function () {
                      href: href,
                      img: img,
                      count: c,
-                     prod_num: prodnum
+                     prod_num: prodnum,
+                     quantity: quantity
                     };
   products.push(new_product);
   $('#main-product-list').append(
@@ -251,6 +270,7 @@ $(document).ready(function() {
     $('#panel h2').text(products[current_prod].name);
     $('#panel img').attr('src', products[current_prod].img);
     $('#count').val(products[current_prod].count);
+    $('#stock-left').text(products[current_prod].quantity);
   });
 
 fb.on("value", function(snap) {
