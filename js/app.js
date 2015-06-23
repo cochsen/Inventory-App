@@ -1,3 +1,13 @@
+/*** 
+To Do: 
+    1. Add WebSQL database for local storage
+    2. Manage dependencies with Bower
+    3. Create Phonegap config.xml
+    4. Add camera plugin for adding photos
+    5. Switch to Ionic CSS
+***/
+
+
 var d = new Date();
 var month = d.getMonth() + 1;
 var day = d.getDate();
