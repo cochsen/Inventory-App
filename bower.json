@@ -1,0 +1,23 @@
+{
+  "name": "Inventory-App",
+  "version": "0.1.0",
+  "homepage": "https://github.com/chris0/Inventory-App",
+  "authors": [
+    "Chris Ochsenreither <christopher.ochsenreither@gmail.com>"
+  ],
+  "description": "Inventory app for keeping track of sales at a flea market, vendor stand, craft show, etc.",
+  "main": "index.html",
+  "keywords": [
+    "inventory",
+    "market",
+    "sales"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
